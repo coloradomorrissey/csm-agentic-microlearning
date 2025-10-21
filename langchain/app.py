@@ -16,10 +16,12 @@ class LessonRequest(BaseModel):
     last_quiz: int           # 0..100
     scenario_prompt: str     # learner's free-text situation
 
+from typing import Optional
+
 class CoachRequest(BaseModel):
-    stage: str | None = None
-    confidence: int | None = None
-    last_quiz: int | None = None
+    stage: Optional[str] = None
+    confidence: Optional[int] = None
+    last_quiz: Optional[int] = None
     scenario_prompt: str
 
 # --- UTILS ---
@@ -85,3 +87,4 @@ Return the following sections (plain text, labeled):
 """
     coach_text = call_openai_chat(system_p, user_p)
     return {"coach_response": coach_text}
+
